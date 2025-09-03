@@ -1,27 +1,38 @@
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuToggle = document.getElementById('header-left-menu');
+    const mobileMenuToggle = document.getElementById('mobile-header-left-menu');
     const mobileMenu = document.getElementById('mobile-header-left-nav');
     const body = document.body;
+
+    // Create overlay element if it doesn't exist
+    let overlay = document.querySelector('.mobile-menu-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'mobile-menu-overlay';
+        document.body.appendChild(overlay);
+    }
 
     if (mobileMenuToggle && mobileMenu) {
         mobileMenuToggle.addEventListener('click', function(e) {
             e.preventDefault();
-            mobileMenu.classList.toggle('open');
+            const isOpen = mobileMenu.classList.contains('open');
 
-            // Prevent body scroll when menu is open
-            if (mobileMenu.classList.contains('open')) {
-                body.style.overflow = 'hidden';
+            if (isOpen) {
+                closeMobileMenu();
             } else {
-                body.style.overflow = '';
+                openMobileMenu();
             }
         });
 
-        // Close mobile menu when clicking outside
+        // Close mobile menu when clicking overlay
+        overlay.addEventListener('click', function() {
+            closeMobileMenu();
+        });
+
+        // Close mobile menu when clicking outside (on body)
         document.addEventListener('click', function(e) {
-            if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-                mobileMenu.classList.remove('open');
-                body.style.overflow = '';
+            if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target) && mobileMenu.classList.contains('open')) {
+                closeMobileMenu();
             }
         });
 
@@ -29,47 +40,32 @@ document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuLinks = mobileMenu.querySelectorAll('a');
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', function() {
-                mobileMenu.classList.remove('open');
-                body.style.overflow = '';
+                closeMobileMenu();
             });
         });
-    }
-});
 
-// Search Toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const searchToggle = document.getElementById('search-toggle');
-    const searchContainer = document.getElementById('search-container');
-
-    if (searchToggle && searchContainer) {
-        searchToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            searchContainer.classList.toggle('displaynone');
-
-            // Focus on search field when opened
-            if (!searchContainer.classList.contains('displaynone')) {
-                const searchField = searchContainer.querySelector('.search-field');
-                if (searchField) {
-                    setTimeout(() => searchField.focus(), 100);
-                }
-            }
-        });
-
-        // Close search when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!searchContainer.contains(e.target) && !searchToggle.contains(e.target)) {
-                searchContainer.classList.add('displaynone');
-            }
-        });
-
-        // Close search on escape key
+        // Close on escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && !searchContainer.classList.contains('displaynone')) {
-                searchContainer.classList.add('displaynone');
+            if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                closeMobileMenu();
             }
         });
     }
+
+    function openMobileMenu() {
+        mobileMenu.classList.add('open');
+        overlay.classList.add('show');
+        body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        overlay.classList.remove('show');
+        body.style.overflow = '';
+    }
 });
+
+
 
 // Keyboard Navigation for Main Menu
 document.addEventListener('DOMContentLoaded', function() {
