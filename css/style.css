@@ -174,7 +174,7 @@ body {
 
 .site-main {
     flex: 1;
-    max-width: calc(100% - 320px);
+    /* max-width: calc(100% - 280px); */
 }
 
 .sidebar-primary {
@@ -260,7 +260,7 @@ body {
 /* Download Items */
 .download-item {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     padding: 15px 0;
     border-bottom: 1px solid #ecf0f1;
 }
@@ -269,26 +269,47 @@ body {
     border-bottom: none;
 }
 
+.download-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
 .download-icon {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     background-color: #e74c3c;
-    border-radius: 6px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    margin-right: 15px;
-    font-size: 20px;
+    font-size: 16px;
+    margin-right: 12px;
+    flex-shrink: 0;
 }
 
 .download-info {
     flex: 1;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.download-link {
+    width: 100%;
+}
+
+.download-link .btn {
+    width: 100%;
+    text-align: center;
 }
 
 .download-info h5 {
     font-size: 16px;
-    margin-bottom: 5px;
+    margin: 0 0 5px 0;
+    line-height: 1.2;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 .download-info a {
@@ -304,9 +325,6 @@ body {
     color: #7f8c8d;
 }
 
-.download-link {
-    margin-left: 15px;
-}
 
 .btn {
     display: inline-block;
@@ -602,14 +620,24 @@ body {
         padding: 20px;
     }
 
-    .download-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
+    .download-header {
+        margin-bottom: 12px;
     }
 
-    .download-link {
-        margin-left: 0;
+    .download-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .download-info {
+        width: 100%;
+        text-align: left;
+    }
+
+    .download-link .btn {
+        font-size: 14px;
+        padding: 10px 16px;
     }
 
     /* Improve mobile header layout */

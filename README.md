@@ -20,7 +20,6 @@ A static website for the Truman High School Class of 1976 49-year reunion, hoste
 ├── reunion-details.html    # Event details and schedule
 ├── rsvp.html              # RSVP and registration form
 ├── payment.html           # Payment information and options
-├── update-info.html       # Update contact information
 ├── contact.html           # Contact form and committee info
 ├── photos.html            # Photo gallery links
 ├── 40-year-reunion-info.html  # 49-year reunion details
