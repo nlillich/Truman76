@@ -719,3 +719,65 @@ body {
         box-shadow: none;
     }
 }
+
+/* Updates Notice Banner */
+.updates-notice-banner {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    color: #fff;
+    padding: 14px 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-bottom: 3px solid #0D47A1;
+    position: relative;
+    z-index: 1000;
+}
+
+.updates-notice-banner .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.updates-notice-banner i {
+    font-size: 22px;
+    color: #E3F2FD;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.updates-notice-banner span {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.updates-notice-banner strong {
+    font-weight: 700;
+    color: #E3F2FD;
+}
+
+@media (max-width: 768px) {
+    .updates-notice-banner {
+        padding: 16px 10px;
+    }
+    
+    .updates-notice-banner .wrapper {
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .updates-notice-banner span {
+        font-size: 14px;
+        flex: 1;
+        min-width: 200px;
+    }
+}
