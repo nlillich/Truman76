@@ -99,6 +99,86 @@
             font-size: 20px;
         }
         
+        /* Collapsible instruction styles */
+        .mobile-instructions {
+            margin-top: 25px;
+            width: 100%;
+        }
+        
+        .instruction-details {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        
+        .instruction-details summary {
+            padding: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #2c3e50;
+            list-style: none;
+            user-select: none;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .instruction-details summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .instruction-details summary::before {
+            content: '▶';
+            margin-right: 10px;
+            transition: transform 0.2s ease;
+            display: inline-block;
+            font-size: 12px;
+        }
+        
+        .instruction-details[open] summary::before {
+            transform: rotate(90deg);
+        }
+        
+        .instruction-details summary:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .instruction-details summary i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .instruction-content {
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            color: #495057;
+            line-height: 1.6;
+            text-align: left;
+        }
+        
+        .instruction-content p {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+        }
+        
+        .instruction-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .instruction-content ol,
+        .instruction-content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .instruction-content li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
         /* Mobile Optimizations */
         @media (max-width: 768px) {
             /* Reset the wide layout on mobile */
@@ -263,6 +343,36 @@
                                         <p style="margin-top: 15px; font-size: 13px; color: #6c757d;">
                                             After downloading, you can fill it out and email it back to us, or print and mail it.
                                         </p>
+                                        
+                                        <!-- Collapsible instructions -->
+                                        <div class="mobile-instructions">
+                                            <details class="instruction-details">
+                                                <summary><i class="fab fa-apple"></i> iOS Instructions</summary>
+                                                <div class="instruction-content">
+                                                    <ol>
+                                                        <li>Select download then select the <i class="fas fa-upload"></i> icon at the bottom of the screen</li>
+                                                        <li>Select <strong>Options</strong> and click <strong>PDF</strong> then <strong>Done</strong></li>
+                                                        <li>Click <strong>Save to Files</strong> and <strong>Save</strong> in the top right corner</li>
+                                                        <li>Open the <strong>Files</strong> app and locate the registration form</li>
+                                                        <li>Click on the edit icon <i class="fas fa-pen-to-square"></i> at the bottom of the screen and fill out the form</li>
+                                                        <li>Send the form via email using the share icon <i class="fas fa-upload"></i> in the bottom left corner</li>
+                                                    </ol>
+                                                </div>
+                                            </details>
+                                            
+                                            <details class="instruction-details">
+                                                <summary><i class="fab fa-android"></i> Android Instructions</summary>
+                                                <div class="instruction-content">
+                                                    <ol>
+                                                        <li>Select the registration form</li>
+                                                        <li>Select <strong>Download</strong></li>
+                                                        <li>Share to <strong>OneDrive</strong></li>
+                                                        <li>Go to OneDrive and fill out the form</li>
+                                                        <li>Send form via email</li>
+                                                    </ol>
+                                                </div>
+                                            </details>
+                                        </div>
                                     </div>
 
                                     <!-- Desktop PDF viewer (hidden on mobile) -->
